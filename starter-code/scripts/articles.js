@@ -4,12 +4,22 @@ function Article (opts) {
   // TODO: Use the object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`.
   this.author = opts.author;
+  this.title = opts.title;
+  this.category = opts.category;
+  this.authorUrl = opts.authorUrl;
+  this.publishedOn = opts.publishedOn;
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
   var $newArticle = $('article.template').clone();
-  $newArticle.attr('data-category', this.category);
 
+  $newArticle.find('address a').html(this.author);
+  $newArticle.find('header h1').html(this.title);
+  $newArticle.find('data-category').attr(this.category);
+  $newArticle.find('.article-body').html(this.body);
+  $newArticle.find("address a").attr("href", this.authorUrl);
+  // $("articles h1").text(this.title)
   /* TODO: Now use jQuery to fill in the rest of the current
   template clone with properties from this particular Article instance.
   We need to fill in:
@@ -19,6 +29,7 @@ Article.prototype.toHtml = function() {
     4. article body, and
     5. publication date. */
 
+    // $newArticle.attr('', this.authorUrl);
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 
@@ -26,7 +37,7 @@ Article.prototype.toHtml = function() {
   as it now has real data attached to it! We need to account
   for that before this current article gets rendered to our
   DOM. */
-
+  $newArticle.removeAttr("class");
   return $newArticle;
 };
 
