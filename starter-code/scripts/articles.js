@@ -3,7 +3,12 @@ var articles = [];
 function Article (opts) {
   // TODO: Use the object passed in to complete this constructor function:
   // Save ALL the properties of `opts` into `this`.
+  this.title = opts.title;
+  this.category = opts.category;
   this.author = opts.author;
+  this.authorUrl = opts.authorUrl;
+  this.publishedOn = opts.publishedOn;
+  this.body = opts.body;
 }
 
 Article.prototype.toHtml = function() {
@@ -18,7 +23,10 @@ Article.prototype.toHtml = function() {
     3. article title
     4. article body, and
     5. publication date. */
-
+  $newArticle.find('address a').text(this.author);
+  $newArticle.find('address a').attr('href', this.authorUrl);
+  $newArticle.find('h1').text(this.title);
+  $newArticle.find('section.article-body').html(this.body);
   $newArticle.find('time[pubdate]').attr('title', this.publishedOn);
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
 
@@ -26,6 +34,7 @@ Article.prototype.toHtml = function() {
   as it now has real data attached to it! We need to account
   for that before this current article gets rendered to our
   DOM. */
+  $newArticle.removeClass('template');
 
   return $newArticle;
 };
