@@ -34,7 +34,7 @@ Article.prototype.toHtml = function() {
   as it now has real data attached to it! We need to account
   for that before this current article gets rendered to our
   DOM. */
-  $('article').removeClass('template');
+  $newArticle.removeClass('template');
   return $newArticle;
 };
 
@@ -47,5 +47,6 @@ ourLocalData.forEach(function(ele) {
 });
 //Rendering to HTML
 articles.forEach(function(a) {
+  console.log(a);
   $('#articles').append(a.toHtml());
 });
