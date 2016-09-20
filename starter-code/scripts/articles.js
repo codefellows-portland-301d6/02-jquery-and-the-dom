@@ -45,6 +45,8 @@ Article.prototype.toHtml = function() {
   for that before this current article gets rendered to our
   DOM. */
 
+  $newArticle.removeClass("template");
+
   return $newArticle;
 };
 
