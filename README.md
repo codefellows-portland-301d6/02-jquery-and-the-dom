@@ -68,7 +68,7 @@ Find those `TODO` items in the code, and tackle one of them.
 6. `mkdir partners-forked-labs`
 7. `cd partners-forked-labs`
 8. The new driver (original navigator):
-  1. `git clone` the repo your patner Slacked you into your navigator folder.
+  1. `git clone` the repo your partner Slacked you into your navigator folder.
   2. `git fetch origin` branch-name
   2. Now open the starter-code in Atom. It's your turn to have the hands on the keyboard!
 
